@@ -64,8 +64,12 @@ Comprobar recursos y configuración mediante Azure CLI y Portal. La conexión a 
 - fmt y fmt -check: exitosos.
 - init: exitoso; AzureRM 4.62.0 firmado por HashiCorp.
 - validate: bloqueado por restricción de socket Unix en el entorno de ejecución; no validado todavía.
-- Azure account show: no hay sesión autenticada reutilizable en este entorno.
-- plan, apply y comprobación Azure: pendientes de autenticación y entorno compatible.
+- Azure account show: autenticación completada; cuenta al222310542@utvtol.edu.mx, Azure for Students, Enabled. El UUID se obtiene de la sesión y no se publica aquí.
+- Azure incluye Mexico Central en ubicaciones de Linux F1, Application Insights y Log Analytics. Las consultas de políticas con y sin coincidencia estricta no devolvieron asignaciones visibles; no demuestra ausencia de restricciones no visibles.
+- Azure list-runtimes confirma NODE|24-lts activo.
+- Azure checknameavailability devuelve nameAvailable=true para app-utvt-integradora-web-qa-mxc-emiliano-001. Debe revisarse de nuevo antes de apply.
+- Se solicitó el registro de Microsoft.Web, microsoft.insights y Microsoft.OperationalInsights; la última consulta muestra Registering.
+- plan, apply y comprobación de recursos: pendientes de entorno compatible. No se ha creado infraestructura.
 - Publicación GitHub y reporte final Word: pendientes.
 
 El plan F1 evita pasar automáticamente a un nivel de cómputo de pago. Log Analytics PerGB2018 y Application Insights pueden generar cargos por uso; sus límites diarios no son una garantía de costo cero.
