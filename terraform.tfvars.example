@@ -1,0 +1,6 @@
+# Ejemplo de nomenclatura, no implica disponibilidad validada.
+# Copiar a terraform.tfvars (excluido de Git) solo después de verificar Azure.
+location      = "mexicocentral"
+location_code = "mxc"
+web_app_name  = "app-utvt-integradora-web-qa-mxc-emiliano-001"
+# subscription_id se inyecta con TF_VAR_subscription_id desde az account show.
