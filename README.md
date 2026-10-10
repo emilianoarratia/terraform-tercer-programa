@@ -15,7 +15,7 @@ El primer commit conserva los tres archivos originales. No se modifica el reposi
 - Se elimina el valor ficticio GATO y se requiere un UUID de suscripción.
 - AzureRM 4.62.0 y Terraform >= 1.13, < 2; lockfile versionado.
 - Locals derivados de la convención del nombre original: utvt, integradora, web, qa, código de región e instancia 001.
-- La región y su código se proporcionan tras verificar políticas y Linux F1. `mxc`/`mexicocentral` aparecen únicamente en el ejemplo.
+- Se verificó Mexico Central para Linux F1, Log Analytics y Application Insights; el despliegue utilizó `mexicocentral` con el código `mxc`.
 - Tags explícitos para proyecto, ambiente, administración y práctica. Son una decisión de implementación; el profesor no proporcionó valores de tags.
 - Nombre Web App obligatorio para comprobar su disponibilidad global antes del despliegue.
 - Outputs de nombres y URL; no se exportan claves ni connection strings.
@@ -24,7 +24,7 @@ El primer commit conserva los tres archivos originales. No se modifica el reposi
 
 ## Ejecución después de autenticar Azure
 
-Cuenta prevista: al222310542@utvtol.edu.mx. Confirmar la sesión actual; no confiar solamente en datos de una práctica anterior.
+Cuenta prevista: universitaria verificada. Confirmar la sesión actual; no confiar solamente en datos de una práctica anterior.
 
 ```powershell
 az account show --query "{user:user.name,subscription:name,id:id,tenant:tenantId,state:state}" -o json
@@ -59,18 +59,19 @@ terraform plan -detailed-exitcode
 
 Comprobar recursos y configuración mediante Azure CLI y Portal. La conexión a Application Insights en configuración no prueba recepción de telemetría: no se incluye una aplicación Node.js del alumno en esta práctica. No ejecutar destroy automáticamente.
 
-## Estado real de esta copia
+## Resultados verificados
 
 - fmt y fmt -check: exitosos.
-- init: exitoso; AzureRM 4.62.0 firmado por HashiCorp.
-- validate: bloqueado por restricción de socket Unix en el entorno de ejecución; no validado todavía.
-- Azure account show: autenticación completada; cuenta al222310542@utvtol.edu.mx, Azure for Students, Enabled. El UUID se obtiene de la sesión y no se publica aquí.
-- Azure incluye Mexico Central en ubicaciones de Linux F1, Application Insights y Log Analytics. Las consultas de políticas con y sin coincidencia estricta no devolvieron asignaciones visibles; no demuestra ausencia de restricciones no visibles.
-- Azure list-runtimes confirma NODE|24-lts activo.
-- Azure checknameavailability devuelve nameAvailable=true para app-utvt-integradora-web-qa-mxc-emiliano-001. Debe revisarse de nuevo antes de apply.
-- Se solicitó el registro de Microsoft.Web, microsoft.insights y Microsoft.OperationalInsights; la última consulta muestra Registering.
-- plan, apply y comprobación de recursos: pendientes de entorno compatible. No se ha creado infraestructura.
-- Publicación GitHub y reporte final Word: pendientes.
+- init y validate: exitosos en PowerShell local con Terraform 1.16.5 y AzureRM 4.62.0 firmado por HashiCorp. El lockfile incluye la selección de Windows.
+- Cuenta universitaria universitaria verificada; Azure for Students, Enabled. El UUID se obtiene de la sesión y no se publica en la configuración.
+- Plan real: 5 recursos por crear, 0 cambios, 0 eliminaciones.
+- Apply real: 5 creados, 0 cambios, 0 eliminaciones.
+- Plan posterior: No changes. Your infrastructure matches the configuration.
+- Azure CLI comprobó Resource Group y recursos en Mexico Central, plan F1/Free, Web App Running, Node.js 24-lts, HTTPS obligatorio, TLS y SCM TLS 1.2, FTPS Disabled y always_on false.
+- Log Analytics: Succeeded, PerGB2018, 30 días, cuota diaria 0.1 GB.
+- Application Insights: Succeeded y conectado al workspace; ambas variables de integración existen en la Web App. No se afirma recepción de telemetría de una aplicación del alumno.
+- Repositorio de entrega: https://github.com/emilianoarratia/terraform-tercer-programa
+- Se conservan los recursos para revisión. No se ejecutó terraform destroy.
 
 El plan F1 evita pasar automáticamente a un nivel de cómputo de pago. Log Analytics PerGB2018 y Application Insights pueden generar cargos por uso; sus límites diarios no son una garantía de costo cero.
 
